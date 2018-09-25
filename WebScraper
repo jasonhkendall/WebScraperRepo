@@ -1,0 +1,17 @@
+# Web Scraper using BeautifulSoup / Python / HTML
+# Module from FreeCodeCamp
+# Jason Kendall - 24/09/18
+
+from bs4 import BeautifulSoup
+import requests
+#
+page_link = 'https://learncodeonline.in'
+#
+page_response = requests.get(page_link, timeout=5)
+#
+page_content = BeautifulSoup(page_response.content, "html.parser")
+
+textContent = []
+for i in range(0, 20):
+    paragraphs = page_content.find_all("p")[i].text
+    textContent.append(paragraphs)
